@@ -9,23 +9,20 @@ import java.util.List;
 
 public class GameVisualizer extends JPanel {
 
-    public List<Robot> robots = new ArrayList<>();
-    public List<Target> targets = new ArrayList<>();
+    private List<Robot> robots = new ArrayList<>();
+    private List<Target> targets = new ArrayList<>();
 
-    public GameVisualizer() {}
-
-
-    public void setRobots(List<Robot> robots) {
-        this.robots = new ArrayList<>(robots);
+    public void setRobots(List<Robot> robots)
+    {
+        this.robots = robots;
         repaint();
     }
 
-    public void setTargets(List<Target> targets) {
-        this.targets = new ArrayList<>(targets);
+    public void setTargets(List<Target> targets)
+    {
+        this.targets = targets;
         repaint();
     }
-
-
 
     private static int round(double value) {
         return (int) (value + 0.5);
@@ -40,7 +37,8 @@ public class GameVisualizer extends JPanel {
     }
 
 
-    private void drawRobot(Graphics2D g, int x, int y, double direction) {
+    private void drawRobot(Graphics2D g, int x, int y, double direction)
+    {
         int robotCenterX = round(x);
         int robotCenterY = round(y);
         AffineTransform t = AffineTransform.getRotateInstance(direction, robotCenterX, robotCenterY);
@@ -56,12 +54,13 @@ public class GameVisualizer extends JPanel {
     }
 
     @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g); // Обязательно вызываем super.paintComponent!
+    protected void paintComponent(Graphics g)
+    {
+        super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
 
         for (Robot robot : robots) {
-            drawRobot(g2d, robot.x, robot.y, robot.direction); // Рисуем каждого робота
+            drawRobot(g2d, robot.x, robot.y, robot.direction);
         }
 
         for (Target target : targets) {
@@ -69,7 +68,8 @@ public class GameVisualizer extends JPanel {
         }
     }
 
-    private void drawTarget(Graphics2D g, int x, int y) {
+    private void drawTarget(Graphics2D g, int x, int y)
+    {
         AffineTransform t = AffineTransform.getRotateInstance(0, 0, 0);
         g.setTransform(t);
         g.setColor(Color.GREEN);
@@ -78,10 +78,8 @@ public class GameVisualizer extends JPanel {
         drawOval(g, x, y, 5, 5);
     }
 
-
-
-    //Вспомогательный класс, представляющий состояние робота
-    public static class Robot {
+    public static class Robot
+    {
         public int x;
         public int y;
         public double direction;
@@ -93,7 +91,8 @@ public class GameVisualizer extends JPanel {
         }
     }
 
-    public static class Target {
+    public static class Target
+    {
         public int x;
         public int y;
 
