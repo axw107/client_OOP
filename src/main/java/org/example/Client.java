@@ -54,9 +54,12 @@ public class Client {
                     int x = Integer.parseInt(parts[i + 1]);
                     int y = Integer.parseInt(parts[i + 2]);
                     double direction = Double.parseDouble(parts[i + 3].replace(",", "."));
+                    int r = Integer.parseInt(parts[i + 4]);
+                    int g = Integer.parseInt(parts[i + 5]);
+                    int b = Integer.parseInt(parts[i + 6]);
 
-                    newRobots.add(new GameVisualizer.Robot(x, y, direction));
-                    i += 4; // pass "ROBOT x y direction"
+                    newRobots.add(new GameVisualizer.Robot(x, y, direction, r, g, b));
+                    i += 7; // pass "ROBOT x y direction r g b"
                 } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
                     return;
                 }

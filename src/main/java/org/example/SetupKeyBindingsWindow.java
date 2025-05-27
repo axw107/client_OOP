@@ -12,7 +12,7 @@ public class SetupKeyBindingsWindow extends JInternalFrame {
         this.client = client;
         setTitle("click on me");
         setSize(300, 200);
-        setLocation(250, 400);
+        setLocation(0, 0);
         setupKeyBindings();
         setVisible(true);
     }

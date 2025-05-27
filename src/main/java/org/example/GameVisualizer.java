@@ -37,13 +37,13 @@ public class GameVisualizer extends JPanel {
     }
 
 
-    private void drawRobot(Graphics2D g, int x, int y, double direction)
+    private void drawRobot(Graphics2D g, int x, int y, double direction, Color color)
     {
         int robotCenterX = round(x);
         int robotCenterY = round(y);
         AffineTransform t = AffineTransform.getRotateInstance(direction, robotCenterX, robotCenterY);
         g.setTransform(t);
-        g.setColor(Color.YELLOW);
+        g.setColor(color);
         fillOval(g, robotCenterX, robotCenterY, 30, 10);
         g.setColor(Color.BLACK);
         drawOval(g, robotCenterX, robotCenterY, 30, 10);
@@ -60,7 +60,7 @@ public class GameVisualizer extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
 
         for (Robot robot : robots) {
-            drawRobot(g2d, robot.x, robot.y, robot.direction);
+            drawRobot(g2d, robot.x, robot.y, robot.direction, robot.color);
         }
 
         for (Target target : targets) {
@@ -83,11 +83,14 @@ public class GameVisualizer extends JPanel {
         public int x;
         public int y;
         public double direction;
+        public Color color;
 
-        public Robot(int x, int y, double direction) {
+        public Robot(int x, int y, double direction, int r, int g, int b) {
             this.x = x;
             this.y = y;
             this.direction = direction;
+            this.color = new Color(r, g, b);
+
         }
     }
 

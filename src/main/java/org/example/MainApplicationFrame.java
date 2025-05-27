@@ -129,8 +129,8 @@ public class MainApplicationFrame extends JFrame
     protected GameWindow createGameWindow(GameVisualizer visualizer)
     {
         GameWindow gameWindow = new GameWindow(visualizer);
-        gameWindow.setSize(800,  800);
-        gameWindow.setLocation(800, 100);
+        gameWindow.setSize(800,  600);
+        gameWindow.setLocation(300, 0);
         return gameWindow;
     }
 
